@@ -1,0 +1,3 @@
+participant_tsv : participant_id.tsv
+input_dir: /scratch/jdekrake/hcp_unfolding3
+boundary: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat

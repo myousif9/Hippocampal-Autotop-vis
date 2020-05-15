@@ -1,0 +1,3 @@
+NameError in line 14 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+name 'subject' is not defined
+  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 14, in <module>
