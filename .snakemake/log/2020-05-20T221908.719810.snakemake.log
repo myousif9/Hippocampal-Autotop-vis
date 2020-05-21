@@ -1,0 +1,30 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	unfolded_plotting_data_extraction
+	2
+
+[Wed May 20 22:19:09 2020]
+rule unfolded_plotting_data_extraction:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/unfold.mat, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/surf.mat, /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat
+    output: output/100610_unfolded.png, output/100610_unfolded.npz, output/100610_unfold_data.pkl
+    jobid: 1
+    wildcards: subject=100610
+
+[Wed May 20 22:19:12 2020]
+Error in rule unfolded_plotting_data_extraction:
+    jobid: 1
+    output: output/100610_unfolded.png, output/100610_unfolded.npz, output/100610_unfold_data.pkl
+
+RuleException:
+CalledProcessError in line 29 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Command 'set -euo pipefail;  /home/myousif9/venv3/bin/python /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpjz3z0cl7.genfigure_dataextract.py' returned non-zero exit status 1.
+  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 29, in __rule_unfolded_plotting_data_extraction
+  File "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-05-20T221908.719810.snakemake.log

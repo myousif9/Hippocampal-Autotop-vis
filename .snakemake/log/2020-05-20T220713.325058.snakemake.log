@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 19 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Missing input files for rule unfolded_plotting_data_extraction:
+100610
