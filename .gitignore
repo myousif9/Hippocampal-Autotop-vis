@@ -1,0 +1,4 @@
+output*/
+scripts/snakemake_hippo_gif/
+scripts/*.sif
+jobs/

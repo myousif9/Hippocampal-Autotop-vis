@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 14 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Missing input files for rule all:
+log/gif_hippo_100610.log

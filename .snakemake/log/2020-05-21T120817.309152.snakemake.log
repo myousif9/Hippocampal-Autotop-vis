@@ -1,0 +1,7 @@
+The flag 'temp' used in rule all is only valid for outputs, not inputs.
+The flag 'temp' used in rule all is only valid for outputs, not inputs.
+The flag 'temp' used in rule all is only valid for outputs, not inputs.
+Building DAG of jobs...
+WildcardError in line 14 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Wildcards in input files cannot be determined from output files:
+'subject'

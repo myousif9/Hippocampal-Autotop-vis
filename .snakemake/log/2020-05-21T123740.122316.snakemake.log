@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	gif_hippo
+	2
+
+[Thu May 21 12:37:41 2020]
+rule gif_hippo:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii.gz
+    output: output/100610_ap.gif, output/100610_io.gif, output/100610_pd.gif
+    log: logs/gif_hippo_100610.log
+    jobid: 2
+    wildcards: subject=100610
+
+[Thu May 21 12:37:44 2020]
+Error in rule gif_hippo:
+    jobid: 2
+    output: output/100610_ap.gif, output/100610_io.gif, output/100610_pd.gif
+    log: logs/gif_hippo_100610.log (check log file(s) for error message)
+    shell:
+        
+            gunzip -k /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii.gz &&
+            mv /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii output/100610_ap.nii &&
+            gif_your_nifti output/100610_ap.nii --fps 30 --mode psuedocolor --cmap parula  &> logs/gif_hippo_100610.log
+           
+            gunzip -k /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii.gz &&
+            mv /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii output/100610_io.nii &&
+            gif_your_nifti output/100610_io.nii --fps 30 --mode pseudocolor --cmap parula  &> logs/gif_hippo_100610.log
+
+            gunzip -k /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii.gz &&
+            mv /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii output/100610_pd.nii
+            gif_your_nifti output/100610_pd.nii --fps 30 --mode pseudocolor --cmap parula  &> logs/gif_hippo_100610.log
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-05-21T123740.122316.snakemake.log

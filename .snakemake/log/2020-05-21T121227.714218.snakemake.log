@@ -1,0 +1,17 @@
+Building DAG of jobs...
+Job counts:
+	count	jobs
+	1	all
+	1	gif_hippo
+	2
+
+[Thu May 21 12:12:28 2020]
+rule gif_hippo:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii.gz
+    output: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii, output/100610_ap.nii, output/100610_io.nii, output/100610_pd.nii, output/100610_ap.gif, output/100610_io.gif, output/100610_pd.gif
+    log: logs/gif_hippo_100610.log
+    jobid: 2
+    wildcards: subject=100610
+
+RuleException in line 37 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+'OutputFiles' object has no attribute 'ap_out'

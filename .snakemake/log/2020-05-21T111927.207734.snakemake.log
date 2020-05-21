@@ -1,0 +1,2 @@
+SyntaxError in line 36 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Unexpected keyword param in rule definition (Snakefile, line 36)

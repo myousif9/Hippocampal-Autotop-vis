@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	gif_hippo
+	2
+
+[Thu May 21 12:31:15 2020]
+rule gif_hippo:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii.gz
+    output: output/100610_ap.gif, output/100610_io.gif, output/100610_pd.gif
+    log: logs/gif_hippo_100610.log
+    jobid: 2
+    wildcards: subject=100610
+
+[Thu May 21 12:31:40 2020]
+Finished job 2.
+1 of 2 steps (50%) done
+
+[Thu May 21 12:31:40 2020]
+localrule all:
+    input: output/100610_thick_unfold.png, output/100610_GI_unfold.png, output/100610_qmap_unfold.png, output/100610_unfolded.npz, output/100610_unfold_data.pkl, output/100610_ap.gif, output/100610_io.gif, output/100610_pd.gif
+    jobid: 0
+
+[Thu May 21 12:31:40 2020]
+Finished job 0.
+2 of 2 steps (100%) done
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-05-21T123114.551316.snakemake.log

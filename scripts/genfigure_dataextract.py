@@ -74,10 +74,10 @@ def gen_fig(img_mat,img_idx,boundary_mat,output_npz,output_img):
     f.savefig(output_img)
 
 
-gen_data_table(surf, 'streamlengths', boundary, subject, snakemake.output[2])
-gen_data_table(surf, 'GI', boundary, subject, snakemake.output[2])
-gen_data_table(surf, 'qMap', boundary, subject, snakemake.output[2])
+gen_data_table(surf, 'streamlengths', boundary, subject, snakemake.output[1])
+gen_data_table(surf, 'GI', boundary, subject, snakemake.output[1])
+gen_data_table(surf, 'qMap', boundary, subject, snakemake.output[1])
 
-gen_fig(surf, 'streamlengths', boundary, snakemake.output[1], snakemake.output[0])
-gen_fig(surf, 'GI', boundary,  snakemake.output[1], snakemake.output[0])
-gen_fig(surf, 'qMap', boundary,  snakemake.output[1], snakemake.output[0])
+gen_fig(surf, 'streamlengths', boundary, snakemake.output[0], snakemake.output[2])
+gen_fig(surf, 'GI', boundary,  snakemake.output[0], snakemake.output[3])
+gen_fig(surf, 'qMap', boundary,  snakemake.output[0], snakemake.output[4])
