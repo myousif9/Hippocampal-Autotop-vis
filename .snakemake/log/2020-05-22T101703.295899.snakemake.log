@@ -1,0 +1,43 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	gif_hippo
+	1	unfolded_plotting_data_extraction
+	3
+
+[Fri May 22 10:17:03 2020]
+rule unfolded_plotting_data_extraction:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/unfold.mat, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/surf.mat, /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat
+    output: output/100610_unfolded.npz, output/100610_unfold_data.pkl, output/100610_thick_unfold.png, output/100610_GI_unfold.png, output/100610_qmap_unfold.png
+    jobid: 1
+    wildcards: subject=100610
+
+[Fri May 22 10:17:09 2020]
+Finished job 1.
+1 of 3 steps (33%) done
+
+[Fri May 22 10:17:09 2020]
+rule gif_hippo:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii.gz
+    output: output/100610_ap_viridis.gif, output/100610_io_viridis.gif, output/100610_pd_viridis.gif
+    log: logs/gif_hippo_100610.log
+    jobid: 2
+    wildcards: subject=100610
+
+[Fri May 22 10:17:21 2020]
+Finished job 2.
+2 of 3 steps (67%) done
+
+[Fri May 22 10:17:21 2020]
+localrule all:
+    input: output/100610_thick_unfold.png, output/100610_GI_unfold.png, output/100610_qmap_unfold.png, output/100610_unfolded.npz, output/100610_unfold_data.pkl, output/100610_ap_viridis.gif, output/100610_io_viridis.gif, output/100610_pd_viridis.gif
+    jobid: 0
+
+[Fri May 22 10:17:21 2020]
+Finished job 0.
+3 of 3 steps (100%) done
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-05-22T101703.295899.snakemake.log

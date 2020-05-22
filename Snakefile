@@ -24,6 +24,8 @@ rule all:
         expand('output/{subject}_io_viridis.gif', subject = subjects),
         expand('output/{subject}_pd_viridis.gif', subject = subjects),
 
+        "output/unfold_data.pkl"
+
         # expand(join(config['input_dir'],'{subject}','hemi-L','coords-AP.nii'), subject = subjects),
         # expand(join(config['input_dir'],'{subject}','hemi-L','coords-IO.nii'), subject = subjects),
         # expand(join(config['input_dir'],'{subject}','hemi-L','coords-PD.nii'), subject = subjects),
@@ -86,3 +88,10 @@ rule unfolded_plotting_data_extraction:
         
     script: "scripts/genfigure_dataextract.py"
 
+rule aggregate:
+    input:
+        ["output/{subject}_unfold_data.pkl".format(subject=subject) for subject in subjects]
+    output:
+        "output/unfold_data.pkl"
+
+    script: "scripts/aggreg_data.py"

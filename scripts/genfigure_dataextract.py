@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 unfold = loadmat(snakemake.input[0])
 surf = loadmat(snakemake.input[1])
 boundary = loadmat(snakemake.input[2])
-subject = snakemake.input[0].split('_')[0]
+subject = snakemake.input[0].split('/')[-3]
 
 def gen_data_table(img_mat,img_idx,boundary_mat,subject,output): 
     # img_mat = loadmat(input_mat)
@@ -21,12 +21,16 @@ def gen_data_table(img_mat,img_idx,boundary_mat,subject,output):
     x = np.arange(0,256)
     x = np.reshape(x,(-1,1))
     x_mat = np.repeat(x,128,axis=1)
-
-    df = pd.DataFrame({'subject':[subject for x in range(len(subfield_map.flatten()))],
-                       'labels': subfield_map.flatten().astype(int),
-                       'x_label': x_mat.flatten(),
-                       str(img_idx): img_mat[img_idx].flatten()})
-    df.to_pickle(output)
+    if os.path.isfile(output) == False:
+        df = pd.DataFrame({'subject':[subject for x in range(len(subfield_map.flatten()))],
+                        'labels': subfield_map.flatten().astype(int),
+                        'x_label': x_mat.flatten(),
+                        str(img_idx): img_mat[img_idx].flatten()})
+        df.to_pickle(output)
+    else:
+        df_pickle = pd.read_pickle(output)
+        df_pickle[str(img_idx)] = img_mat[img_idx].flatten()
+        df_pickle.to_pickle(output)
     
 
 def gen_fig(img_mat,img_idx,boundary_mat,output_npz,output_img):
@@ -56,10 +60,10 @@ def gen_fig(img_mat,img_idx,boundary_mat,output_npz,output_img):
     npz_dict = {img_idx+'_img_nointer':img_nointerp.transpose(), img_idx+'_img_interp':img_interp.transpose()}
     if os.path.isfile(output_npz):
         npz_load = dict(np.load(output_npz,allow_pickle=True))
-        new_npz = [npz_load,npz_dict]
-        np.savez(output_npz, new_npz)
+        npz_load.update(npz_dict)
+        np.savez(output_npz, **npz_load)
     else:
-        np.savez(output_npz, npz_dict)
+        np.savez(output_npz, **npz_dict,allow_pickle=True)
 
     #plotting figure
     f = plt.figure()
