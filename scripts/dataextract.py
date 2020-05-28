@@ -21,11 +21,18 @@ def gen_data_table(img_mat,img_idx,boundary_mat,subject,output):
     x = np.arange(0,256)
     x = np.reshape(x,(-1,1))
     x_mat = np.repeat(x,128,axis=1)
+
+    img = img_mat[img_idx]
+    img_mean, img_std = np.mean(img), np.std(img)
+    lower_bound, upper_bound = img_mean-(3*img_std), img_mean+(3*img_std)
+    img[np.logical_or(img<lower_bound,img>upper_bound)] = np.nan
+
+
     if os.path.isfile(output) == False:
         df = pd.DataFrame({'subject':[subject for x in range(len(subfield_map.flatten()))],
                         'labels': subfield_map.flatten().astype(int),
                         'x_label': x_mat.flatten(),
-                        str(img_idx): img_mat[img_idx].flatten()})
+                        str(img_idx): img.flatten()})
         df.to_pickle(output)
     else:
         df_pickle = pd.read_pickle(output)
@@ -38,6 +45,12 @@ def gen_fig(img_mat,img_idx,boundary_mat,output_npz,output_img):
     # img = img[img_idx]
     
     img = img_mat[img_idx]
+
+    img_mean, img_std = np.mean(img), np.std(img)
+    lower_bound, upper_bound = img_mean - img_std*3, img_mean + img_std*3
+
+    img[np.logical_or(img>upper_bound,img<lower_bound)] = np.nan 
+
     img_nointerp =  img
 
     # boundary = loadmat(boundary_path)
@@ -57,7 +70,10 @@ def gen_fig(img_mat,img_idx,boundary_mat,output_npz,output_img):
     img_interp = interpolate.griddata((x1,y1), newimg.ravel(), (xx,yy), method='cubic')
     
     # saving interpolated image and 
-    npz_dict = {img_idx+'_img_nointer':img_nointerp.transpose(), img_idx+'_img_interp':img_interp.transpose()}
+    if img_nointerp == (128, 256):
+        npz_dict = {img_idx+'_img_nointer':img_nointerp, img_idx+'_img_interp':img_interp}
+    else:
+        npz_dict = {img_idx+'_img_nointer':img_nointerp.transpose(), img_idx+'_img_interp':img_interp.transpose()}
     if os.path.isfile(output_npz):
         npz_load = dict(np.load(output_npz,allow_pickle=True))
         npz_load.update(npz_dict)

@@ -1,0 +1,77 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	aggregate
+	1	all
+	2	gif_hippo
+	2	unfolded_plotting_data_extraction
+	6
+
+[Tue May 26 23:38:24 2020]
+rule unfolded_plotting_data_extraction:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/unfold.mat, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/surf.mat, /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat
+    output: output/100610_unfolded.npz, output/100610_unfold_data.pkl, output/100610_thick_unfold.png, output/100610_GI_unfold.png, output/100610_qmap_unfold.png
+    jobid: 1
+    wildcards: subject=100610
+
+[Tue May 26 23:38:29 2020]
+Finished job 1.
+1 of 6 steps (17%) done
+
+[Tue May 26 23:38:29 2020]
+rule unfolded_plotting_data_extraction:
+    input: /scratch/jdekrake/hcp_unfolding3/105923/hemi-L/unfold.mat, /scratch/jdekrake/hcp_unfolding3/105923/hemi-L/surf.mat, /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat
+    output: output/105923_unfolded.npz, output/105923_unfold_data.pkl, output/105923_thick_unfold.png, output/105923_GI_unfold.png, output/105923_qmap_unfold.png
+    jobid: 2
+    wildcards: subject=105923
+
+[Tue May 26 23:38:34 2020]
+Finished job 2.
+2 of 6 steps (33%) done
+
+[Tue May 26 23:38:34 2020]
+rule aggregate:
+    input: output/100610_unfold_data.pkl, output/105923_unfold_data.pkl
+    output: output/unfold_data.pkl
+    jobid: 5
+
+[Tue May 26 23:44:02 2020]
+Finished job 5.
+3 of 6 steps (50%) done
+
+[Tue May 26 23:44:02 2020]
+rule gif_hippo:
+    input: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-AP.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-IO.nii.gz, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/coords-PD.nii.gz
+    output: output/100610_ap_viridis.gif, output/100610_io_viridis.gif, output/100610_pd_viridis.gif
+    log: logs/gif_hippo_100610.log
+    jobid: 3
+    wildcards: subject=100610
+
+[Tue May 26 23:44:14 2020]
+Finished job 3.
+4 of 6 steps (67%) done
+
+[Tue May 26 23:44:14 2020]
+rule gif_hippo:
+    input: /scratch/jdekrake/hcp_unfolding3/105923/hemi-L/coords-AP.nii.gz, /scratch/jdekrake/hcp_unfolding3/105923/hemi-L/coords-IO.nii.gz, /scratch/jdekrake/hcp_unfolding3/105923/hemi-L/coords-PD.nii.gz
+    output: output/105923_ap_viridis.gif, output/105923_io_viridis.gif, output/105923_pd_viridis.gif
+    log: logs/gif_hippo_105923.log
+    jobid: 4
+    wildcards: subject=105923
+
+[Tue May 26 23:44:25 2020]
+Finished job 4.
+5 of 6 steps (83%) done
+
+[Tue May 26 23:44:25 2020]
+localrule all:
+    input: output/100610_thick_unfold.png, output/105923_thick_unfold.png, output/100610_GI_unfold.png, output/105923_GI_unfold.png, output/100610_qmap_unfold.png, output/105923_qmap_unfold.png, output/100610_unfolded.npz, output/105923_unfolded.npz, output/100610_unfold_data.pkl, output/105923_unfold_data.pkl, output/100610_ap_viridis.gif, output/105923_ap_viridis.gif, output/100610_io_viridis.gif, output/105923_io_viridis.gif, output/100610_pd_viridis.gif, output/105923_pd_viridis.gif, output/unfold_data.pkl
+    jobid: 0
+
+[Tue May 26 23:44:25 2020]
+Finished job 0.
+6 of 6 steps (100%) done
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-05-26T233823.512570.snakemake.log

@@ -1,0 +1,2 @@
+SyntaxError in line 46 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Unexpected keyword out_temp in rule definition (Snakefile, line 46)

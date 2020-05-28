@@ -1,0 +1,2 @@
+SyntaxError in line 104 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Unexpected keyword scrpit in rule definition (Snakefile, line 104)

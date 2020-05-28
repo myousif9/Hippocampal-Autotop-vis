@@ -1,0 +1,3 @@
+CreateRuleException in line 99 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+The name aggregate is already used by another rule
+  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 99, in <module>
