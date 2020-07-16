@@ -4,8 +4,9 @@
    
 ## Requirements
 1. Snakemake [installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
-2. [Gif your nifti](https://github.com/miykael/gif_your_nifti) singularity container --> https://hub.docker.com/r/kaitj/gif_your_nifti
-    `singularity pull docker://kaitj/gif_your_nifti`
+2. [Gif your nifti](https://github.com/miykael/gif_your_nifti) singularity container --> https://hub.docker.com/r/kaitj/gif_your_nifti 
+     
+     `singularity pull docker://kaitj/gif_your_nifti`
 3. Python packages
 - pandas
 - numpy
@@ -46,3 +47,7 @@ cmap: plasma      <-- choose the color map you would like for your unfolded maps
 3. Ready to run the pipeline now! 
 - Run with by using command `snakemake` or which ever way works for your system or compute cluster etc.
 - To generate report by running `snakemake --report`
+
+## Acknowledgements
+
+Thanks to [Roy Haast](https://github.com/royhaast) and [Jason Kai](https://github.com/kaitj) for providing code and help in making this pipeline 
