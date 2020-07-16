@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 62 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Missing input files for rule data_extraction:
+/scratch/myousif9/08_ASL_unfold/100610/MEMP2RAGE/morphometry.mat
+/scratch/myousif9/08_ASL_unfold/100610/DWI/morphometry.mat

@@ -2,3 +2,10 @@ output*/
 scripts/snakemake_hippo_gif/
 scripts/*.sif
 jobs/
+*.ipynb
+*/*.ipynb
+*/*/*.ipynb
+logs/
+*/visualize.py
+report.html
+

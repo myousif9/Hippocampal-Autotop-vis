@@ -1,0 +1,18 @@
+Building DAG of jobs...
+Creating report...
+Adding 601127_hemi-L_GI_unfold.png (0.097 MB).
+Adding 601127_hemi-L_streamlengths_unfold.png (0.15 MB).
+Adding 601127_hemi-L_AP_viridis.gif (0.22 MB).
+Adding 601127_hemi-L_IO_viridis.gif (0.22 MB).
+Adding 601127_hemi-L_PD_viridis.gif (0.22 MB).
+Adding 601127_hemi-L_GI_violinplot_group.png (0.023 MB).
+Adding 601127_hemi-L_GI_lineplot_group.png (0.039 MB).
+Adding 601127_hemi-L_streamlengths_violinplot_group.png (0.037 MB).
+Adding 601127_hemi-L_streamlengths_lineplot_group.png (0.048 MB).
+Adding 601127_hemi-L_qMap_violinplot_group.png (0.04 MB).
+Adding 601127_hemi-L_qMap_lineplot_group.png (0.054 MB).
+WorkflowError:
+Error loading caption file of output marked for report.
+FileNotFoundError: [Errno 2] No such file or directory: '/scratch/myousif9/snakemake_hippocampal_unfolding/report/fig2_unfolded_maps.rst'
+  File "/home/myousif9/venv3/lib/python3.7/site-packages/snakemake/report/__init__.py", line 653, in auto_report
+  File "/home/myousif9/venv3/lib/python3.7/site-packages/snakemake/report/__init__.py", line 431, in render

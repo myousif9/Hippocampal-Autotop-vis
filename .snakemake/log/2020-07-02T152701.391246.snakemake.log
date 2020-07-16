@@ -1,0 +1,4 @@
+Building DAG of jobs...
+MissingInputException in line 19 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Missing input files for rule data_extraction:
+/home/myousif9/scratch/hcp_unfolding3_jdrek/601127/hemi-L/surf.mat

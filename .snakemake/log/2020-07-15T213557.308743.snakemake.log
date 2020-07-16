@@ -1,0 +1,19 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	report
+	2
+
+[Wed Jul 15 21:35:57 2020]
+rule report:
+    input: output/601127_hemi-L_AP_viridis.gif, output/601127_hemi-L_IO_viridis.gif, output/601127_hemi-L_PD_viridis.gif, output/601127_hemi-L_GI_unfold.png, output/601127_hemi-L_streamlengths_unfold.png, output/601127_hemi-L_GI_violinplot_group.png, output/601127_hemi-L_GI_lineplot_group.png, output/601127_hemi-L_streamlengths_violinplot_group.png, output/601127_hemi-L_streamlengths_lineplot_group.png
+    output: report.html
+    jobid: 14
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-15T213557.308743.snakemake.log

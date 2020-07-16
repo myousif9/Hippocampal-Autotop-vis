@@ -1,0 +1,31 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	6	gif_hippo
+	11	visualize
+	18
+
+[Fri Jun  5 12:36:06 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/100610_streamlengths_boxplot.png
+    jobid: 12
+    wildcards: subject=100610, feature=streamlengths, plot=boxplot
+
+[Fri Jun  5 12:36:09 2020]
+Error in rule visualize:
+    jobid: 12
+    output: output/100610_streamlengths_boxplot.png
+
+RuleException:
+CalledProcessError in line 92 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Command 'set -euo pipefail;  /home/myousif9/venv3/bin/python /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp90axfkdz.visualize.py' returned non-zero exit status 1.
+  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 92, in __rule_visualize
+  File "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-06-05T123606.284402.snakemake.log

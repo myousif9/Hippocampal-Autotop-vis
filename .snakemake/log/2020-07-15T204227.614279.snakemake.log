@@ -1,0 +1,20 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	3	gif_hippo
+	4
+
+[Wed Jul 15 20:42:30 2020]
+rule gif_hippo:
+    input: /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-IO.nii.gz
+    output: output/601127_hemi-L_IO_viridis.gif
+    jobid: 6
+    wildcards: subject=601127, hemi=L, coords=IO
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-15T204227.614279.snakemake.log

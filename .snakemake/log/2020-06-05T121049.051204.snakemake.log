@@ -1,0 +1,64 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	aggregate
+	1	all
+	2	data_extraction
+	6	gif_hippo
+	1	visualize_group
+	11
+
+[Fri Jun  5 12:10:49 2020]
+rule data_extraction:
+    input: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/surf.mat
+    output: output/100610_unfolded.npz, output/100610_unfold_data.pkl, output/100610_hemi-L_GI_unfold.png, output/100610_hemi-L_streamlengths_unfold.png, output/100610_hemi-L_qMap_unfold.png
+    jobid: 1
+    wildcards: subject=100610
+
+[Fri Jun  5 12:10:57 2020]
+Finished job 1.
+1 of 11 steps (9%) done
+
+[Fri Jun  5 12:10:57 2020]
+rule data_extraction:
+    input: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/jdekrake/hcp_unfolding3/105923/hemi-L/surf.mat
+    output: output/105923_unfolded.npz, output/105923_unfold_data.pkl, output/105923_hemi-L_GI_unfold.png, output/105923_hemi-L_streamlengths_unfold.png, output/105923_hemi-L_qMap_unfold.png
+    jobid: 2
+    wildcards: subject=105923
+
+[Fri Jun  5 12:11:03 2020]
+Finished job 2.
+2 of 11 steps (18%) done
+
+[Fri Jun  5 12:11:03 2020]
+rule aggregate:
+    input: output/100610_unfold_data.pkl, output/105923_unfold_data.pkl
+    output: output/unfold_data.pkl
+    jobid: 9
+
+[Fri Jun  5 12:11:07 2020]
+Finished job 9.
+3 of 11 steps (27%) done
+
+[Fri Jun  5 12:11:07 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/unfold_data.csv, output/100610_GI_boxplot.png, output/100610_GI_lineplot.png, output/100610_streamlengths_boxplot.png, output/100610_streamlengths_lineplot.png, output/100610_qMap_boxplot.png, output/100610_qMap_lineplot.png, output/105923_GI_boxplot.png, output/105923_GI_lineplot.png, output/105923_streamlengths_boxplot.png, output/105923_streamlengths_lineplot.png, output/105923_qMap_boxplot.png, output/105923_qMap_lineplot.png
+    jobid: 10
+
+[Fri Jun  5 12:11:07 2020]
+Error in rule visualize_group:
+    jobid: 10
+    output: output/unfold_data.csv, output/100610_GI_boxplot.png, output/100610_GI_lineplot.png, output/100610_streamlengths_boxplot.png, output/100610_streamlengths_lineplot.png, output/100610_qMap_boxplot.png, output/100610_qMap_lineplot.png, output/105923_GI_boxplot.png, output/105923_GI_lineplot.png, output/105923_streamlengths_boxplot.png, output/105923_streamlengths_lineplot.png, output/105923_qMap_boxplot.png, output/105923_qMap_lineplot.png
+
+RuleException:
+AttributeError in line 108 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+'NoneType' object has no attribute 'name'
+  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 108, in __rule_visualize_group
+  File "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-06-05T121049.051204.snakemake.log

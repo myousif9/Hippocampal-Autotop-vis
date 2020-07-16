@@ -1,0 +1,2 @@
+SyntaxError in line 73 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+EOF in multi-line statement (Snakefile, line 73)

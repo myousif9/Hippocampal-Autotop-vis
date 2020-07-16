@@ -1,0 +1,12 @@
+Building DAG of jobs...
+AmbiguousRuleException:
+Rules visualize and data_extraction are ambiguous for the file output/100610_thick_unfold.png.
+Consider starting rule output with a unique prefix, constrain your wildcards, or use the ruleorder directive.
+Wildcards:
+	visualize: feature=thick,plot=unfold,subject=100610
+	data_extraction: subject=100610
+Expected input files:
+	visualize: output/unfold_data.pkl
+	data_extraction: /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/unfold.mat /scratch/jdekrake/hcp_unfolding3/100610/hemi-L/surf.mat /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.matExpected output files:
+	visualize: output/100610_thick_unfold.png
+	data_extraction: output/100610_unfolded.npz output/100610_unfold_data.pkl output/100610_thick_unfold.png output/100610_GI_unfold.png output/100610_qmap_unfold.png

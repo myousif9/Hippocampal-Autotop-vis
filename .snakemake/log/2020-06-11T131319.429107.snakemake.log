@@ -1,0 +1,27 @@
+Building DAG of jobs...
+MissingInputException in line 12 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Missing input files for rule all:
+output/sub-S002_unfolded.npz
+output/sub-S006_hemi-L_GI_unfold.png
+output/sub-S004_hemi-L_streamlengths_unfold.png
+output/sub-S003_unfold_data.pkl
+output/sub-S001_hemi-L_GI_unfold.png
+output/sub-S005_unfold_data.pkl
+output/sub-S004_unfolded.npz
+output/sub-S006_hemi-L_streamlengths_unfold.png
+output/sub-S006_unfold_data.pkl
+output/sub-S005_hemi-L_streamlengths_unfold.png
+output/sub-S003_hemi-L_GI_unfold.png
+output/sub-S004_unfold_data.pkl
+output/sub-S003_hemi-L_streamlengths_unfold.png
+output/sub-S001_unfold_data.pkl
+output/sub-S001_hemi-L_streamlengths_unfold.png
+output/sub-S004_hemi-L_GI_unfold.png
+output/sub-S005_hemi-L_GI_unfold.png
+output/sub-S002_hemi-L_streamlengths_unfold.png
+output/sub-S006_unfolded.npz
+output/sub-S001_unfolded.npz
+output/sub-S003_unfolded.npz
+output/sub-S002_unfold_data.pkl
+output/sub-S005_unfolded.npz
+output/sub-S002_hemi-L_GI_unfold.png

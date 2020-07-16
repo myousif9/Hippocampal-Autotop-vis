@@ -1,0 +1,226 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cluster nodes: 500
+Job counts:
+	count	jobs
+	1	aggregate
+	1	all
+	1	data_extraction
+	2	gen_figure
+	3	gif_hippo
+	6	visualize_group
+	14
+[Thu Jul 16 10:48:38 2020]
+
+group job quality-control (jobs in lexicogr. order):
+
+    [Thu Jul 16 10:48:38 2020]
+    rule gif_hippo:
+        input: /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-PD.nii.gz
+        output: output/601127_hemi-L_PD_viridis.gif
+        jobid: 7
+        wildcards: subject=601127, hemi=L, coords=PD
+        resources: mem_mb=4000
+
+Submitted group job 7a586188-e42e-5253-9f59-9f8b65d94ad9 with external jobid '35231208'.
+
+[Thu Jul 16 10:48:48 2020]
+rule gen_figure:
+    input: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat, /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/surf.mat
+    output: output/601127_hemi-L_GI_unfold.png
+    jobid: 2
+    wildcards: subject=601127, hemi=L, feature=GI
+    resources: mem_mb=4000
+
+Submitted job 2 with external jobid '35231217'.
+
+[Thu Jul 16 10:48:53 2020]
+rule gen_figure:
+    input: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat, /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/surf.mat
+    output: output/601127_hemi-L_streamlengths_unfold.png
+    jobid: 3
+    wildcards: subject=601127, hemi=L, feature=streamlengths
+    resources: mem_mb=4000
+
+Submitted job 3 with external jobid '35231220'.
+[Thu Jul 16 10:48:53 2020]
+
+group job quality-control (jobs in lexicogr. order):
+
+    [Thu Jul 16 10:48:53 2020]
+    rule gif_hippo:
+        input: /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-AP.nii.gz
+        output: output/601127_hemi-L_AP_viridis.gif
+        jobid: 5
+        wildcards: subject=601127, hemi=L, coords=AP
+        resources: mem_mb=4000
+
+Submitted group job eef382fd-bbde-5e9b-8934-4b4f2144311c with external jobid '35231222'.
+
+[Thu Jul 16 10:48:56 2020]
+rule data_extraction:
+    input: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat, /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/surf.mat
+    output: output/601127_unfolded.npz, output/601127_unfold_data.pkl
+    jobid: 1
+    wildcards: subject=601127
+    resources: mem_mb=4000
+
+[Thu Jul 16 10:48:58 2020]
+Error in group job quality-control:
+    [Thu Jul 16 10:48:58 2020]
+    Error in rule gif_hippo:
+        jobid: 7
+        output: output/601127_hemi-L_PD_viridis.gif
+        shell:
+        gunzip -k -c /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-PD.nii.gz > output/601127_hemi-L_PD.nii; gif_your_nifti output/601127_hemi-L_PD.nii --fps 30 --mode pseudocolor --size 0.5 --cmap viridis
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+        cluster_jobid: 35231208
+
+Error executing group job quality-control on cluster (jobid: 7a586188-e42e-5253-9f59-9f8b65d94ad9, external: 35231208, jobscript: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/tmp.b6oyjo9k/snakejob.quality-control.7a586188-e42e-5253-9f59-9f8b65d94ad9.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+Submitted job 1 with external jobid '35231225'.
+[Thu Jul 16 10:48:59 2020]
+
+group job quality-control (jobs in lexicogr. order):
+
+    [Thu Jul 16 10:48:59 2020]
+    rule gif_hippo:
+        input: /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-IO.nii.gz
+        output: output/601127_hemi-L_IO_viridis.gif
+        jobid: 6
+        wildcards: subject=601127, hemi=L, coords=IO
+        resources: mem_mb=4000
+
+Submitted group job d2e4dd36-14a6-5506-b5dd-c99749b79f3b with external jobid '35231228'.
+[Thu Jul 16 10:49:01 2020]
+
+group job feature-extraction (jobs in lexicogr. order):
+
+    [Thu Jul 16 10:49:01 2020]
+    rule aggregate:
+        input: output/601127_unfold_data.pkl
+        output: output/unfold_data.pkl
+        jobid: 4
+        resources: mem_mb=4000
+
+Submitted group job d3c6ba57-88a1-5c0c-b373-d8f3260f65bb with external jobid '35231230'.
+
+[Thu Jul 16 10:49:04 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/601127_hemi-L_GI_violinplot_group.png
+    jobid: 8
+    wildcards: subject=601127, hemi=L, feature=GI, plot=violinplot
+    resources: mem_mb=4000
+
+Submitted job 8 with external jobid '35231231'.
+
+[Thu Jul 16 10:49:06 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/601127_hemi-L_qMap_violinplot_group.png
+    jobid: 12
+    wildcards: subject=601127, hemi=L, feature=qMap, plot=violinplot
+    resources: mem_mb=4000
+
+[Thu Jul 16 10:49:08 2020]
+Error in rule gen_figure:
+    jobid: 2
+    output: output/601127_hemi-L_GI_unfold.png
+    cluster_jobid: 35231217
+
+Error executing rule gen_figure on cluster (jobid: 2, external: 35231217, jobscript: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/tmp.b6oyjo9k/snakejob.gen_figure.2.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Thu Jul 16 10:49:08 2020]
+Error in rule gen_figure:
+    jobid: 3
+    output: output/601127_hemi-L_streamlengths_unfold.png
+    cluster_jobid: 35231220
+
+Error executing rule gen_figure on cluster (jobid: 3, external: 35231220, jobscript: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/tmp.b6oyjo9k/snakejob.gen_figure.3.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Thu Jul 16 10:49:08 2020]
+Error in group job quality-control:
+    [Thu Jul 16 10:49:08 2020]
+    Error in rule gif_hippo:
+        jobid: 5
+        output: output/601127_hemi-L_AP_viridis.gif
+        shell:
+        gunzip -k -c /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-AP.nii.gz > output/601127_hemi-L_AP.nii; gif_your_nifti output/601127_hemi-L_AP.nii --fps 30 --mode pseudocolor --size 0.5 --cmap viridis
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+        cluster_jobid: 35231222
+
+Error executing group job quality-control on cluster (jobid: eef382fd-bbde-5e9b-8934-4b4f2144311c, external: 35231222, jobscript: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/tmp.b6oyjo9k/snakejob.quality-control.eef382fd-bbde-5e9b-8934-4b4f2144311c.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Thu Jul 16 10:49:08 2020]
+Error in rule data_extraction:
+    jobid: 1
+    output: output/601127_unfolded.npz, output/601127_unfold_data.pkl
+    cluster_jobid: 35231225
+
+Error executing rule data_extraction on cluster (jobid: 1, external: 35231225, jobscript: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/tmp.b6oyjo9k/snakejob.data_extraction.1.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+[Thu Jul 16 10:49:08 2020]
+Error in group job quality-control:
+    [Thu Jul 16 10:49:08 2020]
+    Error in rule gif_hippo:
+        jobid: 6
+        output: output/601127_hemi-L_IO_viridis.gif
+        shell:
+        gunzip -k -c /home/myousif9/scratch/hcp_unfolding3_jdkrek/601127/hemi-L/coords-IO.nii.gz > output/601127_hemi-L_IO.nii; gif_your_nifti output/601127_hemi-L_IO.nii --fps 30 --mode pseudocolor --size 0.5 --cmap viridis
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+        cluster_jobid: 35231228
+
+Error executing group job quality-control on cluster (jobid: d2e4dd36-14a6-5506-b5dd-c99749b79f3b, external: 35231228, jobscript: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/tmp.b6oyjo9k/snakejob.quality-control.d2e4dd36-14a6-5506-b5dd-c99749b79f3b.sh). For error details see the cluster log and the log files of the involved rule(s).
+Job failed, going on with independent jobs.
+Submitted job 12 with external jobid '35231234'.
+
+[Thu Jul 16 10:49:09 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/601127_hemi-L_streamlengths_lineplot_group.png
+    jobid: 11
+    wildcards: subject=601127, hemi=L, feature=streamlengths, plot=lineplot
+    resources: mem_mb=4000
+
+Submitted job 11 with external jobid '35231236'.
+
+[Thu Jul 16 10:49:11 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/601127_hemi-L_streamlengths_violinplot_group.png
+    jobid: 10
+    wildcards: subject=601127, hemi=L, feature=streamlengths, plot=violinplot
+    resources: mem_mb=4000
+
+Submitted job 10 with external jobid '35231237'.
+
+[Thu Jul 16 10:49:13 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/601127_hemi-L_qMap_lineplot_group.png
+    jobid: 13
+    wildcards: subject=601127, hemi=L, feature=qMap, plot=lineplot
+    resources: mem_mb=4000
+
+Submitted job 13 with external jobid '35231239'.
+
+[Thu Jul 16 10:49:14 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/601127_hemi-L_GI_lineplot_group.png
+    jobid: 9
+    wildcards: subject=601127, hemi=L, feature=GI, plot=lineplot
+    resources: mem_mb=4000
+
+Submitted job 9 with external jobid '35231241'.
+
+[Thu Jul 16 10:49:16 2020]
+localrule all:
+    input: output/601127_unfolded.npz, output/601127_unfold_data.pkl, output/601127_hemi-L_GI_unfold.png, output/601127_hemi-L_streamlengths_unfold.png, output/unfold_data.pkl, output/601127_hemi-L_AP_viridis.gif, output/601127_hemi-L_IO_viridis.gif, output/601127_hemi-L_PD_viridis.gif, output/601127_hemi-L_GI_violinplot_group.png, output/601127_hemi-L_GI_lineplot_group.png, output/601127_hemi-L_streamlengths_violinplot_group.png, output/601127_hemi-L_streamlengths_lineplot_group.png, output/601127_hemi-L_qMap_violinplot_group.png, output/601127_hemi-L_qMap_lineplot_group.png
+    jobid: 0
+    resources: mem_mb=4000
+
+Submitted job 0 with external jobid '35231244'.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-16T104837.671875.snakemake.log

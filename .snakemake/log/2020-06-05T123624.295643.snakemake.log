@@ -1,0 +1,147 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	6	gif_hippo
+	11	visualize
+	18
+
+[Fri Jun  5 12:36:24 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/105923_streamlengths_lineplot.png
+    jobid: 19
+    wildcards: subject=105923, feature=streamlengths, plot=lineplot
+
+[Fri Jun  5 12:41:58 2020]
+Finished job 19.
+1 of 18 steps (6%) done
+
+[Fri Jun  5 12:41:58 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/105923_qMap_boxplot.png
+    jobid: 20
+    wildcards: subject=105923, feature=qMap, plot=boxplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/105923_qMap_boxplot.png'}
+[Fri Jun  5 12:47:13 2020]
+Finished job 20.
+2 of 18 steps (11%) done
+
+[Fri Jun  5 12:47:13 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/105923_GI_boxplot.png
+    jobid: 16
+    wildcards: subject=105923, feature=GI, plot=boxplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/105923_GI_boxplot.png'}
+[Fri Jun  5 12:52:26 2020]
+Finished job 16.
+3 of 18 steps (17%) done
+
+[Fri Jun  5 12:52:26 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/100610_qMap_boxplot.png
+    jobid: 14
+    wildcards: subject=100610, feature=qMap, plot=boxplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/100610_qMap_boxplot.png'}
+[Fri Jun  5 12:57:48 2020]
+Finished job 14.
+4 of 18 steps (22%) done
+
+[Fri Jun  5 12:57:48 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/100610_streamlengths_boxplot.png
+    jobid: 12
+    wildcards: subject=100610, feature=streamlengths, plot=boxplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/100610_streamlengths_boxplot.png'}
+[Fri Jun  5 13:03:29 2020]
+Finished job 12.
+5 of 18 steps (28%) done
+
+[Fri Jun  5 13:03:29 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/100610_streamlengths_lineplot.png
+    jobid: 13
+    wildcards: subject=100610, feature=streamlengths, plot=lineplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/100610_streamlengths_lineplot.png'}
+[Fri Jun  5 13:09:24 2020]
+Finished job 13.
+6 of 18 steps (33%) done
+
+[Fri Jun  5 13:09:24 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/100610_GI_lineplot.png
+    jobid: 11
+    wildcards: subject=100610, feature=GI, plot=lineplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/100610_GI_lineplot.png'}
+[Fri Jun  5 13:15:04 2020]
+Finished job 11.
+7 of 18 steps (39%) done
+
+[Fri Jun  5 13:15:04 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/100610_qMap_lineplot.png
+    jobid: 15
+    wildcards: subject=100610, feature=qMap, plot=lineplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/100610_qMap_lineplot.png'}
+[Fri Jun  5 13:21:00 2020]
+Finished job 15.
+8 of 18 steps (44%) done
+
+[Fri Jun  5 13:21:00 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/105923_GI_lineplot.png
+    jobid: 17
+    wildcards: subject=105923, feature=GI, plot=lineplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/105923_GI_lineplot.png'}
+[Fri Jun  5 13:26:45 2020]
+Finished job 17.
+9 of 18 steps (50%) done
+
+[Fri Jun  5 13:26:45 2020]
+rule visualize:
+    input: output/unfold_data.pkl
+    output: output/105923_qMap_lineplot.png
+    jobid: 21
+    wildcards: subject=105923, feature=qMap, plot=lineplot
+
+Warning: the following output files of rule visualize were not present when the DAG was created:
+{'output/105923_qMap_lineplot.png'}
+Terminating processes on user request, this might take some time.
+[Fri Jun  5 13:30:43 2020]
+Error in rule visualize:
+    jobid: 21
+    output: output/105923_qMap_lineplot.png
+
+RuleException:
+CalledProcessError in line 92 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
+Command 'set -euo pipefail;  /home/myousif9/venv3/bin/python /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp8vcubew7.visualize.py' returned non-zero exit status 1.
+  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 92, in __rule_visualize
+  File "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+Complete log: /scratch/myousif9/snakemake_hippocampal_unfolding/.snakemake/log/2020-06-05T123624.295643.snakemake.log
