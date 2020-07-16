@@ -44,6 +44,7 @@ hemi:             <-- list of hemispheres to visualize (add R or L or both R and
 cmap: plasma      <-- choose the color map you would like for your unfolded maps 
 ```
    [link to list of colormaps](https://matplotlib.org/3.1.1/gallery/color/colormap_reference.html)
+   
 3. Ready to run the pipeline now! 
 - Run with by using command `snakemake` or which ever way works for your system or compute cluster etc.
 - To generate report by running `snakemake --report`
