@@ -24,7 +24,7 @@
 - pkl and csv file containing flattened unfolded maps in convient format for comparison
 
 ## Requirements
-1. Snakemake [installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
+1. Snakemake [installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html) or if using [compute canada](https://github.com/khanlab/cc-slurm)
 2. [Gif your nifti](https://github.com/miykael/gif_your_nifti) singularity container --> https://hub.docker.com/r/kaitj/gif_your_nifti 
      
      `singularity pull docker://kaitj/gif_your_nifti`
