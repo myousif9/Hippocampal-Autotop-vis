@@ -1,4 +1,5 @@
-output*/
+output_*/
+output7/
 scripts/snakemake_hippo_gif/
 scripts/*.sif
 jobs/

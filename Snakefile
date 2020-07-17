@@ -17,6 +17,7 @@ rule all:
         expand("output/{subject}_unfold_data.pkl", subject = subjects),
         expand("output/{subject}_hemi-{hemi}_{feature}_unfold.png", subject=subjects, hemi=config['hemi'], feature=config['features']),
         "output/unfold_data.pkl",
+        "output/unfold_data.csv",
         expand('output/{subject}_hemi-{hemi}_{coords}_viridis.gif', subject = subjects, hemi=config['hemi'], coords=config['coords']),
         expand("output/{subject}_hemi-{hemi}_{feature}_{plot}_group.png",subject=subjects,hemi=config['hemi'],feature=['GI','streamlengths','qMap'],plot =['violinplot','lineplot']),
         # "report.html"
@@ -72,6 +73,13 @@ rule aggregate:
         "output/unfold_data.pkl"
     group: "feature-extraction"
     script: "scripts/aggreg_data.py"
+
+rule pickle_to_csv:
+    input:  "output/unfold_data.pkl"
+    output: "output/unfold_data.csv"
+    run:
+        pkl_df = pd.read_pickle(input[0])
+        pkl_df.to_csv(output[0])
 
 rule visualize_group:
     input: "output/unfold_data.pkl"
