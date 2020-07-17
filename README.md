@@ -7,14 +7,22 @@
    
    ![IO](output-example/601127_hemi-L_IO_viridis.gif)    ![PD](output-example/601127_hemi-L_PD_viridis.gif)    ![AP](output-example/601127_hemi-L_AP_viridis.gif)
    
-   Unfolded Maps plotted:
+   Unfolded Maps plotted (thickness):
    
-   Thickness
    ![Thickness](output-example/601127_hemi-L_streamlengths_unfold.png)
    
-   Group Plots:
-   ![Subfield Group Plots](output-example/601127_hemi-L_streamlengths_violinplot_group.png)     ![Subfield Group Plots](output-example/601127_hemi-L_streamlengths_lineplot_group.png)
+   Violin Group plot (thickness):
    
+   ![Subfield Group Plots](output-example/601127_hemi-L_streamlengths_violinplot_group.png)     
+   
+   Lineplot Group plot (thickness):
+   
+   ![Subfield Group Plots](output-example/601127_hemi-L_streamlengths_lineplot_group.png)
+   
+### Other output include
+- npz files for each subject containing unfolded maps
+- pkl and csv file containing flattened unfolded maps in convient format for comparison
+
 ## Requirements
 1. Snakemake [installation instructions](https://snakemake.readthedocs.io/en/stable/getting_started/installation.html)
 2. [Gif your nifti](https://github.com/miykael/gif_your_nifti) singularity container --> https://hub.docker.com/r/kaitj/gif_your_nifti 
