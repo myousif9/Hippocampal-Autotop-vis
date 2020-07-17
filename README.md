@@ -72,4 +72,4 @@ cmap: plasma      <-- choose the color map you would like for your unfolded maps
 
 ## Acknowledgements
 
-Thanks to [Roy Haast](https://github.com/royhaast) and [Jason Kai](https://github.com/kaitj) for providing code and help in making this pipeline. 
+Thanks to [Roy Haast](https://github.com/royhaast), [Jason Kai](https://github.com/kaitj) and [Jordan Dekraker](https://github.com/jordandekraker) for providing code and help in making this pipeline. 
