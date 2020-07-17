@@ -43,7 +43,7 @@
 ```
 participant_tsv: participant_id.tsv
 input_dir: /home/myousif9/scratch/hcp_unfolding3_jdkrek                                     <-- top level directory for your dataset
-boundary: /scratch/jdekrake/Hippocampal_AutoTop/misc/BigBrain_ManualSubfieldsUnfolded.mat   <-- do not change this
+boundary: /scripts/BigBrain_ManualSubfieldsUnfolded.mat   <-- do not change this
 singularity: /scratch/myousif9/singularity/gif_your_nifit_miykael.sif                       <-- point this to where ever this singularity container is located
 
 coords:
