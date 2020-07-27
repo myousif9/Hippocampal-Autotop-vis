@@ -1,3 +1,0 @@
-TypeError in line 41 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-join() got an unexpected keyword argument 'coords'
-  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 41, in <module>

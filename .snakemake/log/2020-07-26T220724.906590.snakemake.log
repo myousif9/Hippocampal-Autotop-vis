@@ -1,0 +1,74 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Singularity containers: ignored
+Job counts:
+	count	jobs
+	1	all
+	3	gif_hippo
+	3	visualize_group
+	7
+
+[Sun Jul 26 22:07:25 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-L_GI_violinplot_group.png, output/sub-100307_hemi-L_GI_lineplot_group.png
+    jobid: 10
+    wildcards: subject=100307, hemi=L, feature=GI
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpf5_lv1ph.visualize_group.py
+[Sun Jul 26 22:08:05 2020]
+Finished job 10.
+1 of 7 steps (14%) done
+
+[Sun Jul 26 22:08:05 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-L_streamlengths_violinplot_group.png, output/sub-100307_hemi-L_streamlengths_lineplot_group.png
+    jobid: 11
+    wildcards: subject=100307, hemi=L, feature=streamlengths
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpz_n9yb4i.visualize_group.py
+[Sun Jul 26 22:08:43 2020]
+Finished job 11.
+2 of 7 steps (29%) done
+
+[Sun Jul 26 22:08:43 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-L_qMap_violinplot_group.png, output/sub-100307_hemi-L_qMap_lineplot_group.png
+    jobid: 12
+    wildcards: subject=100307, hemi=L, feature=qMap
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp1hdj187p.visualize_group.py
+[Sun Jul 26 22:09:24 2020]
+Finished job 12.
+3 of 7 steps (43%) done
+
+[Sun Jul 26 22:09:24 2020]
+rule gif_hippo:
+    input: /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/coords-IO.nii.gz
+    output: output/sub-100307_hemi-L_IO_viridis.gif
+    jobid: 8
+    wildcards: subject=100307, hemi=L, coords=IO
+
+
+        gunzip -k -c /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/coords-IO.nii.gz > output/sub-100307_hemi-L_IO.nii;
+        gif_your_nifti output/sub-100307_hemi-L_IO.nii --fps 30 --mode pseudocolor --size 0.5 --cmap viridis
+        
+[Sun Jul 26 22:09:24 2020]
+Error in rule gif_hippo:
+    jobid: 8
+    output: output/sub-100307_hemi-L_IO_viridis.gif
+    shell:
+        
+        gunzip -k -c /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/coords-IO.nii.gz > output/sub-100307_hemi-L_IO.nii;
+        gif_your_nifti output/sub-100307_hemi-L_IO.nii --fps 30 --mode pseudocolor --size 0.5 --cmap viridis
+        
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-26T220724.906590.snakemake.log

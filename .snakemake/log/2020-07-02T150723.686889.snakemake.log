@@ -1,3 +1,0 @@
-KeyError in line 22 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-'img_type'
-  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 22, in <module>

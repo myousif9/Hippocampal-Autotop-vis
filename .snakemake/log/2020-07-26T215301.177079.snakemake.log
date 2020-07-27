@@ -1,0 +1,94 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Singularity containers: ignored
+Job counts:
+	count	jobs
+	1	aggregate
+	1	all
+	1	data_extraction
+	3	gen_figure
+	3	gif_hippo
+	1	pickle_to_csv
+	6	visualize_group
+	16
+
+[Sun Jul 26 21:53:02 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/surf.mat
+    output: output/sub-100307_hemi-L_GI_unfold.png
+    jobid: 2
+    wildcards: subject=100307, hemi=L, feature=GI
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpm2gt5kc2.genfigure.py
+[Sun Jul 26 21:53:04 2020]
+Finished job 2.
+1 of 16 steps (6%) done
+
+[Sun Jul 26 21:53:04 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/surf.mat
+    output: output/sub-100307_hemi-L_qMap_unfold.png
+    jobid: 4
+    wildcards: subject=100307, hemi=L, feature=qMap
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp3x5y0e1h.genfigure.py
+[Sun Jul 26 21:53:07 2020]
+Finished job 4.
+2 of 16 steps (12%) done
+
+[Sun Jul 26 21:53:07 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/surf.mat
+    output: output/sub-100307_hemi-L_streamlengths_unfold.png
+    jobid: 3
+    wildcards: subject=100307, hemi=L, feature=streamlengths
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpe8lhe9tn.genfigure.py
+[Sun Jul 26 21:53:09 2020]
+Finished job 3.
+3 of 16 steps (19%) done
+
+[Sun Jul 26 21:53:09 2020]
+rule data_extraction:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/surf.mat
+    output: output/sub-100307_unfolded.npz, output/sub-100307_unfold_data.pkl
+    jobid: 1
+    wildcards: subject=100307
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpmr5grztm.dataextract.py
+[Sun Jul 26 21:53:12 2020]
+Finished job 1.
+4 of 16 steps (25%) done
+
+[Sun Jul 26 21:53:12 2020]
+rule aggregate:
+    input: output/sub-100307_unfold_data.pkl
+    output: output/unfold_data.pkl
+    jobid: 5
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpym63vm97.aggreg_data.py
+[Sun Jul 26 21:53:14 2020]
+Finished job 5.
+5 of 16 steps (31%) done
+
+[Sun Jul 26 21:53:14 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-L_streamlengths_violinplot_group.png
+    jobid: 12
+    wildcards: subject=100307, hemi=L, feature=streamlengths, plot=violinplot
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpea3qopry.visualize_group.py
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 87 of /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/Snakefile:
+Job completed successfully, but some output files are missing. Missing files after 5 seconds:
+output/sub-100307_hemi-L_streamlengths_violinplot_group.png
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+  File "/project/6007967/akhanf/opt/virtualenvs/snakemake/lib/python3.7/site-packages/snakemake/executors/__init__.py", line 544, in handle_job_success
+  File "/project/6007967/akhanf/opt/virtualenvs/snakemake/lib/python3.7/site-packages/snakemake/executors/__init__.py", line 231, in handle_job_success
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-26T215301.177079.snakemake.log

@@ -1,6 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 40 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-Missing input files for rule gif_hippo:
-/scratch/jdekrake/hcp_unfolding3/100610_hemi-L_coords-PD.nii.gz
-/scratch/jdekrake/hcp_unfolding3/100610_hemi-L_coords-IO.nii.gz
-/scratch/jdekrake/hcp_unfolding3/100610_hemi-L_coords-AP.nii.gz

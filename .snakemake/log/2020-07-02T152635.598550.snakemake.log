@@ -1,3 +1,0 @@
-WildcardError in line 33 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-No values given for wildcard 'hemi'.
-  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 33, in <module>

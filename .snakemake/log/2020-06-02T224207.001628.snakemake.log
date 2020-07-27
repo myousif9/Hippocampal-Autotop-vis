@@ -1,3 +1,0 @@
-KeyError in line 16 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-'figures'
-  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 16, in <module>

@@ -1,2 +1,0 @@
-SyntaxError in line 42 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-Command must be given as string after the shell keyword. (Snakefile, line 42)

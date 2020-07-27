@@ -1,0 +1,94 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Singularity containers: ignored
+Job counts:
+	count	jobs
+	1	all
+	3	gen_figure
+	3	visualize_group
+	7
+
+[Sun Jul 26 22:11:27 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-R/surf.mat
+    output: output/sub-100307_hemi-R_streamlengths_unfold.png
+    jobid: 6
+    wildcards: subject=100307, hemi=R, feature=streamlengths
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpxf60ywsc.genfigure.py
+[Sun Jul 26 22:11:30 2020]
+Finished job 6.
+1 of 7 steps (14%) done
+
+[Sun Jul 26 22:11:30 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-R/surf.mat
+    output: output/sub-100307_hemi-R_GI_unfold.png
+    jobid: 5
+    wildcards: subject=100307, hemi=R, feature=GI
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpjzegewq2.genfigure.py
+[Sun Jul 26 22:11:33 2020]
+Finished job 5.
+2 of 7 steps (29%) done
+
+[Sun Jul 26 22:11:33 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-R/surf.mat
+    output: output/sub-100307_hemi-R_qMap_unfold.png
+    jobid: 7
+    wildcards: subject=100307, hemi=R, feature=qMap
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp4p0eop7n.genfigure.py
+[Sun Jul 26 22:11:36 2020]
+Finished job 7.
+3 of 7 steps (43%) done
+
+[Sun Jul 26 22:11:36 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-R_streamlengths_violinplot_group.png, output/sub-100307_hemi-R_streamlengths_lineplot_group.png
+    jobid: 14
+    wildcards: subject=100307, hemi=R, feature=streamlengths
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp6n2sa1xh.visualize_group.py
+[Sun Jul 26 22:12:15 2020]
+Finished job 14.
+4 of 7 steps (57%) done
+
+[Sun Jul 26 22:12:15 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-R_GI_violinplot_group.png, output/sub-100307_hemi-R_GI_lineplot_group.png
+    jobid: 13
+    wildcards: subject=100307, hemi=R, feature=GI
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmpjzd526iv.visualize_group.py
+[Sun Jul 26 22:12:53 2020]
+Finished job 13.
+5 of 7 steps (71%) done
+
+[Sun Jul 26 22:12:53 2020]
+rule visualize_group:
+    input: output/unfold_data.pkl
+    output: output/sub-100307_hemi-R_qMap_violinplot_group.png, output/sub-100307_hemi-R_qMap_lineplot_group.png
+    jobid: 15
+    wildcards: subject=100307, hemi=R, feature=qMap
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp31h9_65i.visualize_group.py
+[Sun Jul 26 22:13:31 2020]
+Finished job 15.
+6 of 7 steps (86%) done
+
+[Sun Jul 26 22:13:31 2020]
+localrule all:
+    input: output/sub-100307_unfolded.npz, output/sub-100307_unfold_data.pkl, output/sub-100307_hemi-L_GI_unfold.png, output/sub-100307_hemi-L_streamlengths_unfold.png, output/sub-100307_hemi-L_qMap_unfold.png, output/sub-100307_hemi-R_GI_unfold.png, output/sub-100307_hemi-R_streamlengths_unfold.png, output/sub-100307_hemi-R_qMap_unfold.png, output/unfold_data.pkl, output/unfold_data.csv, output/sub-100307_hemi-L_GI_violinplot_group.png, output/sub-100307_hemi-L_GI_lineplot_group.png, output/sub-100307_hemi-L_streamlengths_violinplot_group.png, output/sub-100307_hemi-L_streamlengths_lineplot_group.png, output/sub-100307_hemi-L_qMap_violinplot_group.png, output/sub-100307_hemi-L_qMap_lineplot_group.png, output/sub-100307_hemi-R_GI_violinplot_group.png, output/sub-100307_hemi-R_GI_lineplot_group.png, output/sub-100307_hemi-R_streamlengths_violinplot_group.png, output/sub-100307_hemi-R_streamlengths_lineplot_group.png, output/sub-100307_hemi-R_qMap_violinplot_group.png, output/sub-100307_hemi-R_qMap_lineplot_group.png
+    jobid: 0
+
+[Sun Jul 26 22:13:31 2020]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-26T221125.992491.snakemake.log
