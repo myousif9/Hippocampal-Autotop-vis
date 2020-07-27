@@ -13,22 +13,22 @@ wildcard_constraints:
 
 rule all:
     input:         
-        expand("output/{subject}_unfolded.npz", subject = subjects),
-        expand("output/{subject}_unfold_data.pkl", subject = subjects),
-        expand("output/{subject}_hemi-{hemi}_{feature}_unfold.png", subject=subjects, hemi=config['hemi'], feature=config['features']),
+        expand("output/sub-{subject}_unfolded.npz", subject = subjects),
+        expand("output/sub-{subject}_unfold_data.pkl", subject = subjects),
+        expand("output/sub-{subject}_hemi-{hemi}_{feature}_unfold.png", subject=subjects, hemi=config['hemi'], feature=config['features']),
         "output/unfold_data.pkl",
         "output/unfold_data.csv",
-        expand('output/{subject}_hemi-{hemi}_{coords}_viridis.gif', subject = subjects, hemi=config['hemi'], coords=config['coords']),
-        expand("output/{subject}_hemi-{hemi}_{feature}_{plot}_group.png",subject=subjects,hemi=config['hemi'],feature=['GI','streamlengths','qMap'],plot =['violinplot','lineplot']),
+#        expand('output/sub-{subject}_hemi-{hemi}_{coords}_viridis.gif', subject = subjects, hemi=config['hemi'], coords=config['coords']),
+        expand("output/sub-{subject}_hemi-{hemi}_{feature}_{plot}_group.png",subject=subjects,hemi=config['hemi'],feature=['GI','streamlengths','qMap'],plot =['violinplot','lineplot']),
         # "report.html"
 
 rule gif_hippo:
-    input: join(config['input_dir'],'{subject}','hemi-{hemi}','coords-{coords}.nii.gz'),
+    input: join(config['input_dir'],'sub-{subject}','hemi-{hemi}','coords-{coords}.nii.gz'),
 
     params: 
-        out_temp = 'output/{subject}_hemi-{hemi}_{coords}.nii',
+        out_temp = 'output/sub-{subject}_hemi-{hemi}_{coords}.nii',
         # out = join(config['input_dir'],'{subject}','hemi-{hemi}','coords-{coords}.nii'),
-    output: report('output/{subject}_hemi-{hemi}_{coords}_viridis.gif',category="Quality control")
+    output: report('output/sub-{subject}_hemi-{hemi}_{coords}_viridis.gif',category="Quality control")
     group: "quality-control"
     singularity:
         singularity_img
@@ -49,29 +49,32 @@ rule gif_hippo:
 rule data_extraction:
     input:
         boundary_mat = config['boundary'],
-        unfold_mat = expand(join(config['input_dir'],'{{subject}}/hemi-{hemi}/{mat}.mat'),hemi=config['hemi'], mat=config['unfold_mat']),
+        unfold_mat = expand(join(config['input_dir'],'sub-{{subject}}/hemi-{hemi}/{mat}.mat'),hemi=config['hemi'], mat=config['unfold_mat']),
     params:
         hemi = config['hemi']
     output: 
-        unfold_npz = "output/{subject}_unfolded.npz",
-        data_table = "output/{subject}_unfold_data.pkl",
+        unfold_npz = "output/sub-{subject}_unfolded.npz",
+        data_table = "output/sub-{subject}_unfold_data.pkl",
+    conda: "env/hippvis.yml"
     script: "scripts/dataextract.py"
 
 rule gen_figure:
     input:
         boundary_mat = config['boundary'],
-        unfold_mat = expand(join(config['input_dir'],'{{subject}}/hemi-{{hemi}}/{mat}.mat'),mat=config['unfold_mat']),
+        unfold_mat = expand(join(config['input_dir'],'sub-{{subject}}/hemi-{{hemi}}/{mat}.mat'),mat=config['unfold_mat']),
     params:
         cmap=config['cmap']
-    output: report("output/{subject}_hemi-{hemi}_{feature}_unfold.png",category="Unfolded maps")
+    output: report("output/sub-{subject}_hemi-{hemi}_{feature}_unfold.png",category="Unfolded maps")
+    conda: "env/hippvis.yml"
     script: "scripts/genfigure.py"
 
 rule aggregate:
     input:
-        ["output/{subject}_unfold_data.pkl".format(subject=subject) for subject in subjects]
+        ["output/sub-{subject}_unfold_data.pkl".format(subject=subject) for subject in subjects]
     output:
         "output/unfold_data.pkl"
     group: "feature-extraction"
+    conda: "env/hippvis.yml"
     script: "scripts/aggreg_data.py"
 
 rule pickle_to_csv:
@@ -83,15 +86,18 @@ rule pickle_to_csv:
 
 rule visualize_group:
     input: "output/unfold_data.pkl"
-    output: report("output/{subject}_hemi-{hemi}_{feature}_{plot}_group.png",category="Group plots")
+    output: 
+        violinplot = report("output/sub-{subject}_hemi-{hemi}_{feature}_violinplot_group.png",category="Group plots"),
+        lineplot = report("output/sub-{subject}_hemi-{hemi}_{feature}_lineplot_group.png",category="Group plots")
+    conda: "env/hippvis.yml"
     script:"scripts/visualize_group.py"
 
 
 # rule report:
 #     input:
-#         qc_gifs = expand("output/{subject}_hemi-{hemi}_{coords}_viridis.gif",subject=subjects,hemi=config['hemi'],coords=config['coords']),
-#         unfolded_maps = expand("output/{subject}_hemi-{hemi}_{feature}_unfold.png",subject=subjects,hemi=config['hemi'],feature=config['features']),
-#         group_plots = expand("output/{subject}_hemi-{hemi}_{feature}_{plot}_group.png",subject=subjects,hemi=config['hemi'],feature=config['features'],plot=['violinplot','lineplot']),
+#         qc_gifs = expand("output/sub-{subject}_hemi-{hemi}_{coords}_viridis.gif",subject=subjects,hemi=config['hemi'],coords=config['coords']),
+#         unfolded_maps = expand("output/sub-{subject}_hemi-{hemi}_{feature}_unfold.png",subject=subjects,hemi=config['hemi'],feature=config['features']),
+#         group_plots = expand("output/sub-{subject}_hemi-{hemi}_{feature}_{plot}_group.png",subject=subjects,hemi=config['hemi'],feature=config['features'],plot=['violinplot','lineplot']),
 #     output:
 #         "report.html"
 #     run:
