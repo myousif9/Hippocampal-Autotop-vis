@@ -1,0 +1,42 @@
+Building DAG of jobs...
+Using shell: /cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Conda environments: ignored
+Singularity containers: ignored
+Job counts:
+	count	jobs
+	1	aggregate
+	1	all
+	1	data_extraction
+	3	gen_figure
+	3	gif_hippo
+	1	pickle_to_csv
+	6	visualize_group
+	16
+
+[Sun Jul 26 21:52:11 2020]
+rule gen_figure:
+    input: resources/BigBrain_ManualSubfieldsUnfolded.mat, /scratch/akhanf/test_autotop_ci/output_bidsBatch_cpu/sub-100307/hemi-L/surf.mat
+    output: output/sub-100307_hemi-L_GI_unfold.png
+    jobid: 2
+    wildcards: subject=100307, hemi=L, feature=GI
+
+/project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp2_bz6sbn.genfigure.py
+[Sun Jul 26 21:52:27 2020]
+Error in rule gen_figure:
+    jobid: 2
+    output: output/sub-100307_hemi-L_GI_unfold.png
+
+RuleException:
+CalledProcessError in line 69 of /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/Snakefile:
+Command 'set -euo pipefail;  /project/6007967/akhanf/opt/virtualenvs/snakemake/bin/python /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/scripts/tmp2_bz6sbn.genfigure.py' returned non-zero exit status 1.
+  File "/project/6007967/akhanf/opt/virtualenvs/snakemake/lib/python3.7/site-packages/snakemake/executors/__init__.py", line 2189, in run_wrapper
+  File "/scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/Snakefile", line 69, in __rule_gen_figure
+  File "/project/6007967/akhanf/opt/virtualenvs/snakemake/lib/python3.7/site-packages/snakemake/executors/__init__.py", line 529, in _callback
+  File "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/3.7.4/lib/python3.7/concurrent/futures/thread.py", line 57, in run
+  File "/project/6007967/akhanf/opt/virtualenvs/snakemake/lib/python3.7/site-packages/snakemake/executors/__init__.py", line 515, in cached_or_run
+  File "/project/6007967/akhanf/opt/virtualenvs/snakemake/lib/python3.7/site-packages/snakemake/executors/__init__.py", line 2201, in run_wrapper
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /scratch/akhanf/test_autotop_ci/snakemake_hippocampal_unfolding/.snakemake/log/2020-07-26T215210.220650.snakemake.log

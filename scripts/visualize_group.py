@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns 
 from os.path import join
 
+import matplotlib
+matplotlib.use('Agg')
+
 data = pd.read_pickle(snakemake.input[0])
 
 y_fields = [key for key in data.keys() if key not in ['subject','labels','hemi','x_label','img']]
@@ -100,16 +103,21 @@ def lineplot_AP_group(dataframe, feature, hemi, subfield='all', grouping_feature
 #     plt.savefig(join('output','_'.join([feature,'lineplot_group.png'])))
 
 # hemi = snakemake.params['hemi']
-for hemi in snakemake.wildcards['hemi']:
-    for feature in y_fields:
-        plt.figure()
-        violinplot_group(data, feature)
-        plt.savefig(join('output','_'.join([snakemake.wildcards['subject'],'hemi-'+hemi,feature,'violinplot_group.png'])))
+#for hemi in snakemake.wildcards['hemi']:
+for feature in y_fields:
+    plt.figure()
+    violinplot_group(data, feature)
+    plt.savefig(snakemake.output[0])
 
-        plt.figure()
-        lineplot_AP_group(data, feature,hemi='L')
-        plt.savefig(join('output','_'.join([snakemake.wildcards['subject'],'hemi-'+hemi,feature,'lineplot_group.png'])))
-        # boxplot_group_subfields(data,feature)
-        # lineplot_group_AP(data,feature)
+    plt.figure()
+    lineplot_AP_group(data, feature,hemi=snakemake.wildcards['hemi'])
+    plt.savefig(snakemake.output[1])
+
+#    plt.figure()
+#    lineplot_AP_group(data, feature,hemi='L')
+#    plt.savefig(join('output','_'.join([snakemake.wildcards['subject'],'hemi-'+hemi,feature,'lineplot_group.png'])))
+
+    # boxplot_group_subfields(data,feature)
+    # lineplot_group_AP(data,feature)
 
 # data.to_csv(snakemake.output[0],index=False)

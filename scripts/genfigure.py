@@ -8,6 +8,8 @@ from sklearn.preprocessing import scale
 import os
 import matplotlib.pyplot as plt
 
+import matplotlib
+matplotlib.use('Agg')
 
 # unfold = loadmat(snakemake.input[0])
 # surf = loadmat(snakemake.input[1])

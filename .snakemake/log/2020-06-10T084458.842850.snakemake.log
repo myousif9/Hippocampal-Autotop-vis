@@ -1,4 +1,0 @@
-Building DAG of jobs...
-WildcardError in line 16 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-Wildcards in input files cannot be determined from output files:
-'feature'

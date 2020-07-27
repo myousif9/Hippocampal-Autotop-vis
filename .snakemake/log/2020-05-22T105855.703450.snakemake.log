@@ -1,3 +1,0 @@
-WildcardError in line 91 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-No values given for wildcard 'subject'.
-  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 91, in <module>

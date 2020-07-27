@@ -1,7 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 16 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-Missing input files for rule all:
-output/105923_Cmap_lineplot.png
-output/100610_Cmap_boxplot.png
-output/100610_Cmap_lineplot.png
-output/105923_Cmap_boxplot.png

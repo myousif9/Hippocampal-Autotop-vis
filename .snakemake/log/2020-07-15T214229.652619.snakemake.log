@@ -1,3 +1,0 @@
-RuleException in line 33 of /scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile:
-Singularity directive is only allowed with shell, script, notebook or wrapper directives (not with run).
-  File "/scratch/myousif9/snakemake_hippocampal_unfolding/Snakefile", line 33, in <module>
